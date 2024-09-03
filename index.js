@@ -1,8 +1,8 @@
-const { Client, Intents } = require("discord.js");
-const fs = require("fs");
-const path = require("path");
+import { Client, Intents } from "discord.js";
+import fs from "fs";
+import path from "path";
 
-const configPath = path.join(__dirname, "config.json");
+const configPath = path.join(process.cwd(), "config.json");
 let config;
 try {
   const configData = fs.readFileSync(configPath, "utf8");
@@ -17,7 +17,7 @@ const client = new Client({
 });
 
 let userReactions = {};
-const reactionsFilePath = path.join(__dirname, "userReactions.json");
+const reactionsFilePath = path.join(process.cwd(), "userReactions.json");
 
 try {
   const data = fs.readFileSync(reactionsFilePath, "utf8");
