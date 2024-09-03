@@ -36,9 +36,12 @@ client.once("ready", () => {
 
 client.on("messageCreate", (message) => {
   if (message.author.bot) return;
+
   if (userReactions.hasOwnProperty(message.author.id)) {
-    const reactionEmoji = userReactions[message.author.id];
-    message.react(reactionEmoji).catch(console.error);
+    const reactionEmojis = userReactions[message.author.id];
+    reactionEmojis.forEach((emoji) => {
+      message.react(emoji).catch(console.error);
+    });
   }
 });
 
